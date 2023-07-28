@@ -41,29 +41,29 @@ import json
 # import json
 
 
-os.environ["MLFLOW_EXPERIMENT_NAME"] = "BertBaseUncased"
-print("error fixed")
+# os.environ["MLFLOW_EXPERIMENT_NAME"] = "BertBaseUncased"
+# print("error fixed")
 
 
-# def create_mlflow_experiment(model_name):
-#     mlflow.create_experiment(model_name)
+def create_mlflow_experiment(model_name):
+    mlflow.create_experiment(model_name)
 
-# config_file_path = "test-bert_model.json"  #"config.json"
+config_file_path = "test-bert_model.json"  #"config.json"
 
-# def read_config_file(file_path):
-#     with open(file_path, 'r') as f:
-#         config = json.load(f)
-#     return config
+def read_config_file(file_path):
+    with open(file_path, 'r') as f:
+        config = json.load(f)
+    return config
 
-# config = read_config_file(config_file_path)
+config = read_config_file(config_file_path)
 
-# if "models" in config and isinstance(config["models"], list):
-#     for model_name in config["models"]:
-#         os.environ["MLFLOW_EXPERIMENT_NAME"] = model_name
-#         create_mlflow_experiment(model_name)
-#         print(f"Created MLflow experiment for model: {model_name}")
-# else:
-#     print("Error: 'models' key not found in the config file or not a list.")
+if "models" in config and isinstance(config["models"], list):
+    for model_name in config["models"]:
+        os.environ["MLFLOW_EXPERIMENT_NAME"] = model_name
+        create_mlflow_experiment(model_name)
+        print(f"Created MLflow experiment for model: {model_name}")
+else:
+    print("Error: 'models' key not found in the config file or not a list.")
 
 
 #MLFLOW_TRACKING_URI
