@@ -3,7 +3,7 @@ name: Trigger automate-creation-env
 on:
   push:
     branches:
-      - priya21-test
+      - main
 
 jobs:
   dispatch:
