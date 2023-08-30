@@ -1,14 +1,18 @@
-name: Trigger Automate-creation-env.yml in Repo A
+name: Trigger automate-creation-env
+
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - priya21-test
 
 jobs:
-  trigger_repo_a_workflow:
+  dispatch:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Repo A Workflow
-        uses: Konjarla-Vindya/son-azureml-oss-models@main
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: Konjarla-Vindya/son-azureml-oss-models
-          event-type: trigger-automate-creation-env
+    - name: Repository Dispatch
+      run: >
+        curl -X POST
+        -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}"
+        -H "Accept: application/vnd.github.everest-preview+json"
+        "https://api.github.com/repos/Konjarla-Vindya/son-azureml-oss-models/dispatches"
+        -d '{"event_type": "trigger-automate-creation-env"}'
