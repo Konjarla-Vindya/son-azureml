@@ -1,0 +1,14 @@
+name: Trigger Automate-creation-env.yml in Repo A
+on:
+  workflow_dispatch:
+
+jobs:
+  trigger_repo_a_workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Repo A Workflow
+        uses: Konjarla-Vindya/son-azureml-oss-models@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: Konjarla-Vindya/son-azureml-oss-models
+          event-type: trigger-automate-creation-env
